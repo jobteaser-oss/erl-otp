@@ -40,7 +40,7 @@
     NbDigits :: pos_integer(),
     Password :: non_neg_integer().
 generate(Key, Counter, NbDigits) ->
-  truncate(crypto:hmac(sha, Key, <<Counter:64>>), NbDigits).
+  truncate(crypto:mac(hmac, sha, Key, <<Counter:64>>), NbDigits).
 
 %% @doc Truncate a SHA1 HMAC and reduce it to a numeric password containing
 %% `NbDigits' digits.
